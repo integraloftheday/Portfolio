@@ -1,0 +1,55 @@
+---
+title: Author archive
+layout: layouts/base.njk
+pagination:
+  data: collections.authorsPub
+  size: 1
+  alias: author
+permalink: "authors/publications/{{ author | slug }}/"
+renderData:
+  author: "{{ author }}"
+  title: "publications by {{ author }}"
+  metaDescription: "An archive of all publications by the author: {{ author }}."
+---
+<div class="page-container">
+	<h1>{{ renderData.title | safe }}</h1>
+
+	<section>
+		{% for publication in collections.authorsPub[author] | reverse %}
+			<article{% if publication.page.url == url %} data-current="current item"{% endif %}>
+				<h3>
+					<a href="{{ publication.page.url | url }}">
+						{% if publication.title %}
+							{{ publication.title }}
+						{% else %}
+							Untitled
+						{% endif %}
+					</a>
+				</h3>
+				{% if publication.summary %}
+					<p>
+						{{ publication.summary }}
+					</p>
+				{% endif %}
+				<p>
+					<time datetime="{{ publication.date | machineDate }}">
+						<small>{{ publication.date | readableDate }} by <a href="/authors/publications/{{ publication.author | slug }}/">{{ publication.author }}</a></small>
+					</time>
+				</p>
+				{% if publication.tags %}
+					<p>
+						{% for tag in publication.tags %}
+							{%- if tag != "publication" -%}
+								{% set tagUrl %}/tags/{{ tag }}/{% endset %}
+							<a class="tag" href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
+							{%- endif -%}
+						{% endfor %}
+					</p>
+				{% endif %}
+			</article>
+		{% endfor %}
+		<nav>
+			<a href="{{ '/authors/publications/'}}">← Authors index</a>
+		</nav>
+	</section>
+</div>

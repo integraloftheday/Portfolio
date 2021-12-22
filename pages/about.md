@@ -8,7 +8,7 @@ eleventyNavigation:
   key: About
   order: 1
 ---
-I am Mason Manetta, an student at Arizona State University. I am majoring in Electrical Engineering with minors in Mathmatics and German. Currently I am part of the 4+1 accelerated bachlers and masters program additionaly obtaining my masters in Electrical Engineering with an focus on Signal Processing. I hope to continue my education and obtain an PhD. and to conduct research. 
+I am Mason Manetta, a student at Arizona State University. I am majoring in Electrical Engineering with minors in Mathmatics and German. Currently I am part of the 4+1 accelerated bachlers and masters program obtaining my masters in Electrical Engineering with an focus on Signal Processing. I hope to continue my education and obtain an Ph.D and to conduct research. 
 
 ### Interests
 * VR and AR Medical Applications 
@@ -17,4 +17,4 @@ I am Mason Manetta, an student at Arizona State University. I am majoring in Ele
 * Signal Processing 
 * Traffic Analysis 
 
-![Fern in Hand](/static/img/dreamscape.jpg "Image of Development (I'm the one in the middle)")
+![Image of Development (I'm the one in the middle)](/static/img/dreamscape.jpg)

@@ -37,6 +37,35 @@ module.exports = function(eleventyConfig) {
     }, {});
   });
 
+  eleventyConfig.addCollection("authorsPub", collection => {
+    const blogs = collection.getFilteredByGlob("publications/*.md");
+    return blogs.reduce((coll, pubication) => {
+      const author = pubication.data.author;
+      console.log(author);
+      if(author.includes(',')){
+        author.split(', ').forEach(author => {
+          console.log(author);
+          if (!coll.hasOwnProperty(author)) {
+            coll[author] = [];
+          }
+          coll[author].push(pubication.data);
+        });
+        return coll;
+      }
+
+      else{
+      if (!author) {
+        return coll;
+      }
+      if (!coll.hasOwnProperty(author)) {
+        coll[author] = [];
+      }
+      coll[author].push(pubication.data);
+      return coll;
+    }
+    }, {});
+  });
+
   // Date formatting (human readable)
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj).toFormat("dd LLL yyyy");

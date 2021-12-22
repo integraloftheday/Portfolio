@@ -1,0 +1,25 @@
+---
+title: Authors
+metaDescription: This page lists all of the Blog's authors.
+layout: layouts/base.njk
+pagination:
+  data: collections.authorsPub
+  size: Infinity
+permalink: "authors/publications/index.html"
+---
+<div class="page-container">
+  <h1>{{ title }}</h1>
+
+  <section>
+    {% for author in pagination.items %}
+      <article>
+        <h3>
+          <a href="/authors/publications/{{ author | slug }}">{{ author | safe }}</a>
+        </h3>
+      </article>
+    {% endfor %}
+    <nav>
+      <a href="{{ '/publications/' | url }}">← View All Publications</a>
+    </nav>
+  </section>
+</div>

@@ -27,7 +27,7 @@ The experience was programmed in the Unity Game engine, which interfaced with th
 
 ### Demonstration
 The experience was demonstrated to Dr. Crow, President of ASU, and Walter Parkes, a Hollywood producer and CEO of *Dreamscape Immersive*. 
-![Fern in Hand](/static/img/dreamscape_hero_0.jpg "Dr. Crow and Walter Parkes in the Experience")
+![Dr. Crow and Walter Parkes in the Experience](/static/img/WaveSolverScreenShot.png)
 
 ### Media References 
 * [ASU News Article](https://live-graduate.ws.asu.edu/news/asu-students-create-time-travel-experience-dreamscape-learn)

@@ -7,7 +7,14 @@ section: publication
     <h1>{{ title }}</h1>
     <p>
       <small>
-        <time datetime="{{ date | machineDate }}">{{ date | readableDate }}</time> by <a href="/authors/{{ author | slug }}/">{{ author }}</a>
+        <time datetime="{{ date | machineDate }}">{{ date | readableDate }}</time> by
+        {% for aut in author.split(", ")%}
+          {% if loop.last %}
+             <a href="/authors/publications/{{ aut | slug }}/">{{ aut }}</a>
+          {% else %}
+              <a href="/authors/publications/{{ aut | slug }}/">{{ aut }},</a>
+            {% endif %}
+        {% endfor %}
       </small>
     </p>
     <hr>
