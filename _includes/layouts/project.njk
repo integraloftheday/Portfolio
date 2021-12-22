@@ -1,0 +1,21 @@
+---
+layout: layouts/base.njk
+section: project
+---
+<div class="page-container">
+  <h1>
+
+    {% if image %}
+                <img  style="margin-bottom:0; display:inline; width:10 " class="project-card__emoji"src="{{ image }}" width = "30" height ="30" alt="{{ title }}" />
+    {% else %}            
+      {% if emoji %}
+        <span class="project-card__emoji">{{ emoji }}</span>
+      {% endif %}
+    {% endif %}
+    {{title}}</h1>
+  <hr>
+  {{ layoutContent | safe }}
+  <nav>
+    <a href="{{ '/projects/' | url }}">← View All Projects</a>
+  </nav>
+</div>

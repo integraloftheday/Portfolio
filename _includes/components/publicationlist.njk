@@ -1,0 +1,32 @@
+<section>
+	{% for publication in publicationlist | reverse %}
+    {% if limit === undefined or loop.index0 < limit %}
+      <article class="article-card" {% if publication.url == url %} data-current="current item"{% endif %}>
+        <h5>
+          <a class="article-card__title" href="{{ publication.url | url }}">
+            {% if publication.data.title %}
+              {{ publication.data.title }}
+            {% else %}
+              Untitled
+            {% endif %}
+          </a>
+        </h5>
+        {% if publication.data.summary %}
+          <p class="article-card__summary">
+            {{ publication.data.summary }}
+          </p>
+        {% endif %}
+        {% if publication.data.tags and show_publicationlist_tags %}
+          <p class="tag-list">
+            {% for tag in publication.data.tags %}
+              {%- if tag != "publication" -%}
+                {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+              <a class="tag" href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
+              {%- endif -%}
+            {% endfor %}
+          </p>
+        {% endif %}
+      </article>
+    {% endif %}
+	{% endfor %}
+</section>

@@ -1,0 +1,14 @@
+---
+layout: layouts/base.njk
+section: publications
+permalink: /pubs/index.html
+---
+<div class="page-container">
+  <h1>{{title}}</h1>
+  {{ layoutContent | safe }}
+	<hr>
+
+  {% set publicationlist = collections.publication %}
+  {% set show_publicationlist_tags = true %}
+  {% include "components/publicationlist.njk" %}
+</div>

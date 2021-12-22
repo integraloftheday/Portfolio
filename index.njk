@@ -1,0 +1,60 @@
+---
+layout: layouts/base.njk
+section: home
+---
+{% set show_blog = "true" %}
+
+<div class="home-page">
+	<div class="home-page__bg-square"></div>
+
+  <div class="hero">
+    <div class="hero__col">
+      <h1 class="hero__title gradient-text">{{ home.title }}</h1>
+      {% if home.subtitle %}
+        <h2 class="hero__subtitle">{{ home.subtitle }}</h2>
+      {% endif %}
+    </div>
+    <div class="hero__col">
+      <img
+        class="hero__image shadow"
+        src="{% if home.image %}{{ home.image }}{% else %}https://source.unsplash.com/random/600x600{% endif %}"
+        alt="{{ home.image_alt }}"
+        width="288px"
+        height="288px"
+        loading="lazy">
+    </div>
+    <p class="tag-list">
+      <a class="project-card__tag tag" href="https://drive.google.com/file/d/1UvxHkGxfG1-7QqC2I5OXyR412vlleYt2/view?usp=sharing" rel="tag">📝CV/Resume</a>
+    </P>
+  </div>
+
+  {% if home.block.includes("Projects")==false %}
+    <hr>
+    <h2>Projects</h2>
+    {% set projectlist = collections.project %}
+    {% include "components/projectlist.njk" %}
+  {% endif %}
+
+  {% if home.block.includes("Blog")==false %}
+    <hr>
+    <a class="article-card__title" href="{{ '/publications/' | url }}">
+      <h2>Articles</h2>
+    </a>
+    {% set postslist = collections.post %}
+    {% set show_postslist_tags = false %}
+    {% set limit = 3 %}
+    {% include "components/postslist.njk" %}
+  {% endif %}
+
+
+  {% if home.block.includes("Publications")==false %}
+    <hr>
+    <a class="article-card__title" href="{{ '/publications/' | url }}">
+      <h2>Publications</h2>
+    </a>
+    {% set publicationlist = collections.publication %}
+    {% set show_publicationlist_tags = false %}
+    {% set limit = 3 %}
+    {% include "components/publicationlist.njk" %}
+  {% endif %}
+</div>
