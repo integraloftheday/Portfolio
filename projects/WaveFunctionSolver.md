@@ -21,6 +21,6 @@ The documentation also includes a write up on how the nummerical solver was deri
 
 ### Images 
 
-![Wavefunction Solver Screenshot](/static/img/dreamscape_hero_0.jpg)
+![Wavefunction Solver Screenshot](/static/img/WaveSolverScreenShot.png)
 
 

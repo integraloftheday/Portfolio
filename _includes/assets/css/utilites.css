@@ -6,6 +6,27 @@
 }
 
 .page-container img {
+  display: flex;
+  width: 100%; 
+  max-width: 700px;
+  margin: 4rem auto;
+}
+
+.page-container iframe {
+  display: flex;
+  width: 100%; 
+  max-width: 700px;
+  margin: 4rem auto;
+}
+
+.page-container-list {
+  max-width: var(--site-width);
+  margin-right: auto;
+  margin-left: auto;
+  padding: 1rem;
+}
+
+.page-container-list img {
   max-width: 700px;
   margin: 4rem auto;
 }

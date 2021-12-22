@@ -4,14 +4,14 @@ emoji:
 image: /static/img/Thetalabslogo.png
 metaDescription: AME 494 Class Project
 date: 2019-01-01T00:00:00.000Z
-summary: A VR Climate Future Narative
+summary: A VR Climate Future Narrative
 tags:
   - C Sharp
   - Unity
   - VR
 ---
 
-### Overview
+### Overviewcd 
 In Fall 2021, as part of AME 494, Designing for Dreamscape, my peers and I created a virtual reality experience utilizing *[Dreamscape Immersive](https://www.dreamscapeimmersive.com/)* VR technology. The narrative focussed on what the future could become without action against climate change. 
 
 ### Role
@@ -27,7 +27,7 @@ The experience was programmed in the Unity Game engine, which interfaced with th
 
 ### Demonstration
 The experience was demonstrated to Dr. Crow, President of ASU, and Walter Parkes, a Hollywood producer and CEO of *Dreamscape Immersive*. 
-![Dr. Crow and Walter Parkes in the Experience](/static/img/WaveSolverScreenShot.png)
+![Dr. Crow and Walter Parkes in the Experience](/static/img/dreamscape_hero_0.jpg)
 
 ### Media References 
 * [ASU News Article](https://live-graduate.ws.asu.edu/news/asu-students-create-time-travel-experience-dreamscape-learn)
