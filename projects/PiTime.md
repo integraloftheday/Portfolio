@@ -18,7 +18,7 @@ This website finds the time in the digits of pi. It was created to celebrate pi-
 
 ### Links
 
-The Website can be found at: [integraloftheday.github.io/piTime](integraloftheday.github.io/piTime)
+The Website can be found at: [integraloftheday.github.io/piTime](https://integraloftheday.github.io/piTime)
 
 ### Images 
 
