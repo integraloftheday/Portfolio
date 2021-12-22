@@ -2,7 +2,7 @@
 layout: layouts/base.njk
 section: project
 ---
-<div class="page-container">
+<div class="page-container-list">
   <h1>
 
     {% if image %}
@@ -13,6 +13,8 @@ section: project
       {% endif %}
     {% endif %}
     {{title}}</h1>
+    </div>
+<div class="page-container">
   <hr>
   {{ layoutContent | safe }}
   <nav>
