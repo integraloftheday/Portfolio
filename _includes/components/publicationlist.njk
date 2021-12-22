@@ -20,7 +20,7 @@
           <p class="tag-list">
             {% for tag in publication.data.tags %}
               {%- if tag != "publication" -%}
-                {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+                {% set tagUrl %}/tagsPub/{{ tag }}/{% endset %}
               <a class="tag" href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
               {%- endif -%}
             {% endfor %}
