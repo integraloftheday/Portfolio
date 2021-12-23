@@ -13,4 +13,4 @@ eleventyNavigation:
   order: 5
 ---
 
-Contact infromation below. 
+Contact information below. 

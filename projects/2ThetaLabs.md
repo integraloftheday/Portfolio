@@ -2,6 +2,7 @@
 title: ThetaLabs VR
 emoji: 
 image: /static/img/Thetalabslogo.png
+show: true
 metaDescription: AME 494 Class Project
 date: 2019-01-01T00:00:00.000Z
 summary: A VR Climate Future Narrative
@@ -15,7 +16,7 @@ tags:
 In Fall 2021, as part of AME 494, Designing for Dreamscape, my peers and I created a virtual reality experience utilizing *[Dreamscape Immersive](https://www.dreamscapeimmersive.com/)* VR technology. The narrative focussed on what the future could become without action against climate change. 
 
 ### Role
-I was one of the developers and I focussed on backend development. This included interfacing with the *Dreamscape* SDK to create: haptic sensations (floors rumbling, and fans blowing) and story and experience triggers. Additionally, I implemented a multiplayer data transfer servers allowing individuals to pass data (images) across different narative timelines. 
+I was one of the developers and I focussed on backend development. This included interfacing with the *Dreamscape* SDK to create: haptic sensations (floors rumbling, and fans blowing) and story and experience triggers. Additionally, I implemented a multiplayer data transfer servers allowing individuals to pass data (images) across different narrative timelines. 
 
 ### Technologies Used
 The experience was programmed in the Unity Game engine, which interfaced with the *Dreamscape Immersive* SDK and virtual reality Pod. The Pod is a full room with full bodying and props tracking, floor hapitcs, and wind haptics. 

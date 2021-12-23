@@ -11,5 +11,6 @@ section: projects
   {{ layoutContent | safe }}
 
   {% set projectlist = collections.project %}
+  {% set show_select_projects = false %}
   {% include "components/projectlist.njk" %}
 </div>

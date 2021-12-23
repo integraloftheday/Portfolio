@@ -2,6 +2,7 @@
 title: PiTime
 emoji: π
 image: 
+show: true
 metaDescription: PiTime
 date: 2019-01-01T00:00:00.000Z
 summary: Finds the Time in digits of Pi
@@ -14,7 +15,7 @@ tags:
 ---
 
 ### Overview
-This website finds the time in the digits of pi. It was created to celebrate pi-day and all the mathmatics of pi it self. The website uses the idea in practice any random string of digits can be found in pi to find the current time in the digits of pi. This idea is based on the mypiday website website.
+This website finds the time in the digits of pi. It was created to celebrate pi-day and all the mathematics of pi it self. The website uses the idea in practice any random string of digits can be found in pi to find the current time in the digits of pi. This idea is based on the [mypiday](https://www.mypiday.com/) website by Wolfram.
 
 ### Links
 
@@ -23,6 +24,6 @@ The Website can be found at: [integraloftheday.github.io/piTime](https://integra
 ### Images 
 
 ![PiTime Screenshot](/static/img/PiTime.png)
-Sccreen Shot of PiTime
+Screenshot of PiTime
 
 

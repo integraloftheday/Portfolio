@@ -2,9 +2,10 @@
 title: Wavefunction Solver
 emoji: ⚛️
 image: 
+show: true
 metaDescription: Wavefunction Solver
 date: 2019-01-01T00:00:00.000Z
-summary: Numerical Solver for the Schrödinger Equation
+summary: Schrödinger Equation Solver
 tags:
   - Javascript
   - Web
@@ -17,7 +18,7 @@ A web-based numerical solver for the 1D time independent Schrödinger Equation. 
 
 ### Documentation 
 All the documentation can be found here: [integraloftheday.github.io/WaveFunctionSolver/about.html](https://integraloftheday.github.io/WaveFunctionSolver/about.html)
-The documentation also includes a write up on how the nummerical solver was derived and implemented. 
+The documentation also includes a write up on how the numerical solver was derived and implemented. 
 
 ### Images 
 

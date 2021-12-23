@@ -1,8 +1,9 @@
 ---
-title: Pulsar - VR Mediation 
+title: Pulsar
 emoji: 👓
 image: 
-metaDescription: AME 494 Class Project
+show: true
+metaDescription: VR Mediation Sunhacks 2021
 date: 2019-01-01T00:00:00.000Z
 summary: Sunhacks 2021 1st Place Winner
 tags:
@@ -19,7 +20,7 @@ Pulsar was created as an entry into the [2021 Sunhacks Hackathon](https://sunhac
 I worked on the physical electronics. Programming the data collection and relay cloud server. I programmed some of the VR scenes. 
 
 ### Technologies Used
-Pulsar was built completely around webVR which allows its use on any headset. By doing so the virtual reality experiences are available at the Pulsar website, [sunhacks-pulsar.glitch.me/](https://sunhacks-pulsar.glitch.me/).  In addition to the software pulsare utilized an ESP32 powered heart rate monitor to dynamically update the VR experiences. 
+Pulsar was built completely around webVR which allows its use on any headset. By doing so the virtual reality experiences are available at the Pulsar website, [sunhacks-pulsar.glitch.me/](https://sunhacks-pulsar.glitch.me/).  In addition to the software Pulsar utilized an ESP32 powered heart rate monitor to dynamically update the VR experiences. 
 
 ### Video Overview
 

@@ -33,7 +33,14 @@ renderData:
 				{% endif %}
 				<p>
 					<time datetime="{{ publication.date | machineDate }}">
-						<small>{{ publication.date | readableDate }} by <a href="/authors/publications/{{ publication.author | slug }}/">{{ publication.author }}</a></small>
+						<small>{{ publication.date | readableDate }} by 
+						{% for aut in publication.author.split(", ")%}
+							{% if loop.last %}
+								<a href="/authors/publications/{{ aut | slug }}/">{{ aut }}</a>
+							{% else %}
+								<a href="/authors/publications/{{ aut | slug }}/">{{ aut }},</a>
+								{% endif %}
+							{% endfor %}
 					</time>
 				</p>
 				{% if publication.tags %}

@@ -1,7 +1,8 @@
 ---
 title: GitHub
-emoji: 🗄️
+emoji: 
 image: /static/img/GitHub.jpg
+show: true
 metaDescription: This is a link to my main github page
 date: 2019-01-01T00:00:00.000Z
 summary: Link to Github page & More Projects

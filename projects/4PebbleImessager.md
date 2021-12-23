@@ -2,6 +2,7 @@
 title: Pebble Imessager
 emoji: 💬
 image:
+show: true
 metaDescription: Pebble Imessager
 date: 2019-01-01T00:00:00.000Z
 summary: Imessager Client on Pebble Smart Watch

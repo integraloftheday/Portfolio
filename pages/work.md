@@ -24,7 +24,7 @@ eleventyNavigation:
 
 * Researches
   * Olfactory displays for VR and medical applications 
-  * Mobile and IOT image power consuption and processing 
+  * Mobile and IOT image power consumption and processing 
   * VR shape changing haptic proxies 
 * Technologies used: Python, C#, Javascript, Node.js, and Unity 
 
@@ -35,7 +35,7 @@ eleventyNavigation:
 * Develops alongside *[DreamScape Learn](https://www.dreamscapelearn.com/)* to build full body immersive VR haptic environments and experiences
 * Creates VR and AR applications
 
-#### Mesa Public Schools Infromation Systems *Mesa, Arizona*
+#### Mesa Public Schools Information Systems *Mesa, Arizona*
 
 **MPS Student CTE Intern** *(Summer of 2018)*
 
@@ -62,5 +62,5 @@ eleventyNavigation:
 
  *(2016 - 2020)*
 
-* GPA 4.87/5.0 scale (Unweighted 4.0)
+* GPA 4.87/4.0 scale (Unweighted 4.0)
 * Class Rank: 5 out of 733
