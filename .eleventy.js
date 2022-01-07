@@ -3,11 +3,13 @@ const CleanCSS = require("clean-css");
 const UglifyJS = require("uglify-es");
 const htmlmin = require("html-minifier");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 module.exports = function(eleventyConfig) {
 
   // Eleventy Navigation https://www.11ty.dev/docs/plugins/navigation/
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
+  eleventyConfig.addPlugin(syntaxHighlight);
 
   // Configuration API: use eleventyConfig.addLayoutAlias(from, to) to add
   // layout aliases! Say you have a bunch of existing content using
@@ -104,6 +106,30 @@ module.exports = function(eleventyConfig) {
     return content;
   });
 
+  // note book 
+  eleventyConfig.addPairedShortcode("Notebook", function(content) {
+
+    notebook =
+`<div id="mount-point"></div>
+
+<script type="module">
+import {StarboardEmbed} from "https://unpkg.com/starboard-wrap/dist/index.js"
+const mount = document.querySelector("#mount-point");
+let notebook =  
+\`
+${content}
+\`;
+const el = new StarboardEmbed({
+    notebookContent: notebook,
+    src: "https://unpkg.com/starboard-notebook/dist/index.html"
+});
+mount.appendChild(el);
+</script>`;
+
+    return notebook;
+});
+
+
   // Don't process folders with static assets e.g. images
   eleventyConfig.addPassthroughCopy("favicon.ico");
   eleventyConfig.addPassthroughCopy("static/img");
@@ -113,6 +139,8 @@ module.exports = function(eleventyConfig) {
   /* Markdown Plugins */
   let markdownIt = require("markdown-it");
   let markdownItAnchor = require("markdown-it-anchor");
+  let markdownItKatex = require("markdown-it-katex");
+
   let options = {
     html: true,
     breaks: true,
@@ -124,6 +152,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.setLibrary("md", markdownIt(options)
     .use(markdownItAnchor, opts)
+    .use(markdownItKatex)
   );
 
   return {

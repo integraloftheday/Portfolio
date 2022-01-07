@@ -5,6 +5,8 @@
   <title>{{ renderData.title or title or metadata.title }}</title>
   <meta name="description" content="{{ metaDescription or renderData.metaDescription or summary or metadata.description }}">
   <script async src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+      <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
   {% set css %}
     {% include "assets/css/normalize.css" %}
     {% include "assets/css/variables.css" %}
