@@ -11,6 +11,7 @@ tags:
 # ASU Covid Visualizations 
 
 {% Notebook %}
+
 # %% [markdown]
 # ASU COVID-19 Plots
 
@@ -22,13 +23,13 @@ An updating plot based on current ASU COVID-19 Data
 #   run_on_load: true
 # ---%%
 var asuCovidUrl = "https://eoss.asu.edu/health/announcements/coronavirus/management/index.html";
-var proxyUrl = "https://api.allorigins.win/get?url=";
+var proxyUrl = "https://api.allorigins.win/raw?url=";
 var graphWidth = 900;
 var graphHeight = 500;
 
 
 var data = await fetch(proxyUrl+asuCovidUrl);
-var htmlData = await data.json();
+var htmlData = await data.text();
 # %% [markdown]
 ### Definition of Classes 
 # %%--- [javascript]
@@ -80,14 +81,14 @@ class DataEntry{
       	.replace(/&nbsp;/g, ' ')
       	.replace(",","")
       	.replace("*","")
-      	.match(/\d+/g)
+      	.match(/\\d+/g)
       	.map((x)=>parseInt(x))
   
       var intArrayStudent = currentPositive.body.getElementsByTagName("li")[1].innerHTML
       	.replace(/&nbsp;/g, ' ')
       	.replace(",","")
       	.replace("*","")
-      	.match(/\d+/g)
+      	.match(/\\d+/g)
       	.map((x)=>parseInt(x))
   
       return {
@@ -103,38 +104,95 @@ class DataEntry{
 }
 
 class DataFrame{
-	constructor(entryArray){
-      this.date = [];
-      this.staffPositive = [];
-      this.staffTotal = [];
-      this.staffPercent = [];
-      this.studentPositive = [];
-      this.studentTotal = [];
-      this.studentPercent = [];
-	  this.csv = "data,staffPositive,staffTotal,staffPercent,studentPositive,studentTotal,studentPercent \\n";
-      
-      for(var i = 0; i < entryArray.length; i++){
-        if(entryArray[i].currentPositive!=null){
-          this.date.push(entryArray[i].date);
-          this.staffPositive.push(entryArray[i].currentPositive.staffPositive);
-          this.staffTotal.push(entryArray[i].currentPositive.staffTotal);
-          this.staffPercent.push(entryArray[i].currentPositive.staffPercent);
-          this.studentPositive.push(entryArray[i].currentPositive.studentPositive);
-          this.studentTotal.push(entryArray[i].currentPositive.studentTotal);
-          this.studentPercent.push(entryArray[i].currentPositive.studentPercent);
-          this.csv = this.csv + entryArray[i].date.toString()+","+entryArray[i].currentPositive.staffPositive.toString()+"," + entryArray[i].currentPositive.staffTotal.toString()+","+entryArray[i].currentPositive.staffPercent.toString()+","+entryArray[i].currentPositive.studentPositive.toString()+","+entryArray[i].currentPositive.studentTotal.toString()+","+entryArray[i].currentPositive.studentPercent.toString()+"\\n"
-          }
-      }
+  constructor(entryArray){
+    this.data = {};
+    //this.csv ="";
+
+    for(var i = 0; i < entryArray.length; i++){
+    	var keys = Object.keys(entryArray[i])
+      	var keysExisting = Object.keys(this.data);
+      	//console.log(keysExisting);
+      	for(var j = 0; j< keys.length; j++){
+        //  console.log(this.data);
+        	if(keysExisting.includes(keys[j])){
+              this.data[keys[j]].push(entryArray[i][keys[j]]);
+            } 
+            else{
+              this.data[keys[j]] = [];
+              this.data[keys[j]].push(entryArray[i][keys[j]]);
+            }
+        }
     }
-	dataGen(set1,set2){
-      data = [];
-      for(var i = 0; i < set1.length; i ++){
-        data.push({x:set1[i],y:set2[i]})
-      }
-      return data; 
+  }
+
+  delta(dataKey){
+    var dataArray = typeof dataKey == 'string' ? this.data[dataKey] : dataKey
+    var returnArray = [];
+    for(var i = 0; i < dataArray.length -1; i++){
+      returnArray.push(dataArray[i+1] - dataArray[i]);
     }
+    return returnArray
+  }
+
+  div(dataKey1, dataKey2){
+    var dataArray1 = typeof dataKey1 == 'string' ? this.data[dataKey1] : dataKey1
+    var dataArray2 = typeof dataKey2 == 'string' ? this.data[dataKey2] : dataKey2
+    var returnArray = []; 
+    //console.log(dataArray1);
+    for(var i =0 ; i < dataArray1.length; i++){
+      returnArray.push(dataArray1[i]/dataArray2[i])
+    }
+    return(returnArray);
+  }
   
+    sub(dataKey1, dataKey2){
+    var dataArray1 = typeof dataKey1 == 'string' ? this.data[dataKey1] : dataKey1
+    var dataArray2 = typeof dataKey2 == 'string' ? this.data[dataKey2] : dataKey2
+    var returnArray = []; 
+    for(var i =0 ; i < dataArray1.length; i++){
+      returnArray.push(dataArray1[i]-dataArray2[i])
+    }
+    return(returnArray);
+  }
+    mult(dataKey1, dataKey2){
+    var dataArray1 = typeof dataKey1 == 'string' ? this.data[dataKey1] : dataKey1
+    var dataArray2 = typeof dataKey2 == 'string' ? this.data[dataKey2] : dataKey2
+    var returnArray = []; 
+    for(var i =0 ; i < dataArray1.length; i++){
+      returnArray.push(dataArray1[i]*dataArray2[i])
+    }
+    return(returnArray);
+  }
+
+  add(dataKey1, dataKey2){
+    var dataArray1 = typeof dataKey1 == 'string' ? this.data[dataKey1] : dataKey1
+    var dataArray2 = typeof dataKey2 == 'string' ? this.data[dataKey2] : dataKey2
+    var returnArray = []; 
+    for(var i =0 ; i < dataArray1.length; i++){
+      returnArray.push(dataArray1[i]+dataArray2[i])
+    }
+    return(returnArray);
+  }
+  
+  get csv(){
+    var headerValues = Object.keys(this.data); 
+    var headerString = headerValues.join(",") + "\\n"; 
+    var bodyString = "";
+    for(var i = 0; i < this.data[headerValues[0]].length; i ++){
+      var lineStr = ""
+      for(var keyI = 0; keyI < headerValues.length ; keyI ++){
+        if(keyI == 0)
+        	lineStr = this.data[headerValues[keyI]][i].toString()
+        else
+          	lineStr = lineStr +"," + this.data[headerValues[keyI]][i].toString();
+      }
+      bodyString = bodyString + "\\n" + lineStr;
+    }
+
+    return (headerString + "\\n" + bodyString);
+  }
 }
+
 # %% [markdown]
 ### Parse Data
 # %%--- [javascript]
@@ -145,7 +203,7 @@ class DataFrame{
 var parser = new DOMParser();
 
 // Parse the text
-var doc = parser.parseFromString(htmlData.contents, "text/html");
+var doc = parser.parseFromString(htmlData, "text/html");
 
 //split data by pannels 
 var docPannels = doc.getElementsByClassName("panel"); 
@@ -159,7 +217,25 @@ for(var i = 0; i<docPannelsArray.length; i++){
 	dataArray.push(new DataEntry(docPannelsArray[i]));
 }
 
-var df = new DataFrame(dataArray)
+dataArray.reverse() // flip data from newest to oldest to oldest to newest
+
+// create proper format for Dataframe
+//an array of dictionary entries
+var dataInput = [];
+dataArray.map((x)=>{if(x.currentPositive != undefined){;
+                    
+                    	dataInput.push({date:x.date,
+                                   staffPositive:x.currentPositive.staffPositive,
+                                   staffTotal:x.currentPositive.staffTotal,
+                                   staffPercent:x.currentPositive.staffPercent,
+                                   studentPositive:x.currentPositive.studentPositive,
+                                   studentTotal:x.currentPositive.studentTotal,
+                                   studentPercent:x.currentPositive.studentPercent}
+                                      )}
+                   }
+             );
+
+var df = new DataFrame(dataInput)
 
 # %% [markdown]
 ### Graph Data
@@ -173,16 +249,16 @@ await import ("https://cdn.plot.ly/plotly-2.8.3.min.js");
 const graphStaff = document.createElement("div")
 
 var trace1 = {
-  x: df.date,
-  y: df.staffPositive ,
+  x: df.data.date,
+  y: df.data.staffPositive ,
   name: 'Number of Staff Positive',
   type: 'scatter'
 };
 
 
 var trace2 = {
-  x: df.date,
-  y: df.staffPercent.map((x)=>x*100),
+  x: df.data.date,
+  y: df.data.staffPercent.map((x)=>x*100),
   name: 'Percentage of Staff Positive',
   yaxis: 'y2',
   type: 'scatter'
@@ -215,19 +291,69 @@ graphStaff
 #   top_hidden: true
 # ---%%
 
+const graphStaff = document.createElement("div")
+
+var changePerDay = df.div(df.delta("staffPositive"),df.delta("date")).map((x)=>{return(x*60*24*60*1000)});
+var changePerDayShifted = df.div(df.delta("staffPositive"),df.delta("date")).map((x)=>{return(x*60*24*60*1000)});
+changePerDayShifted.unshift(1);
+var percentChangePerDay = df.div(df.sub(changePerDayShifted,changePerDay),changePerDay).map((x)=>{return (x*100)});
+
+var trace1 = {
+  x: df.data.date,
+  y: changePerDay,
+  name: 'Change in Number of Staff Positive',
+  type: 'scatter'
+};
+
+
+var trace2 = {
+  x: df.data.date,
+  y: percentChangePerDay,
+  name: 'Percent Change in Number of Staff Positive',
+  yaxis: 'y2',
+  type: 'scatter'
+};
+
+
+var data = [trace1, trace2];
+
+var layout = {
+  autosize: true,
+  width: graphWidth,
+  height: graphHeight,
+  title: 'ASU Staff Covid Change per Day',
+  yaxis: {title: 'Change'},
+  yaxis2: {
+    title: 'Percent Change',
+    titlefont: {color: 'rgb(148, 103, 189)'},
+    tickfont: {color: 'rgb(148, 103, 189)'},
+    overlaying: 'y',
+    side: 'right'
+  }
+};
+
+Plotly.newPlot(graphStaff, data, layout);
+
+graphStaff
+# %%--- [javascript]
+# properties:
+#   run_on_load: true
+#   top_hidden: true
+# ---%%
+
 const graphStudent = document.createElement("div")
 
 var trace1 = {
-  x: df.date,
-  y: df.studentPositive ,
+  x: df.data.date,
+  y: df.data.studentPositive ,
   name: 'Number of Student Positive',
   type: 'scatter'
 };
 
 
 var trace2 = {
-  x: df.date,
-  y: df.studentPercent.map((x)=>x*100),
+  x: df.data.date,
+  y: df.data.studentPercent.map((x)=>x*100),
   name: 'Percentage of Student Positive',
   yaxis: 'y2',
   type: 'scatter'
@@ -254,11 +380,65 @@ var layout = {
 Plotly.newPlot(graphStudent, data, layout);
 
 graphStudent
+# %%--- [javascript]
+# properties:
+#   run_on_load: true
+#   top_hidden: true
+# ---%%
+
+const graphStaff = document.createElement("div")
+
+var changePerDay = df.div(df.delta("studentPositive"),df.delta("date")).map((x)=>{return(x*60*24*60*1000)});
+var changePerDayShifted = df.div(df.delta("studentPositive"),df.delta("date")).map((x)=>{return(x*60*24*60*1000)});
+changePerDayShifted.unshift(1);
+var percentChangePerDay = df.div(df.sub(changePerDayShifted,changePerDay),changePerDay).map((x)=>{return (x*100)});
+
+console.log();
+var trace1 = {
+  x: df.data.date,
+  y: changePerDay,
+  name: 'Change in Number of Student Positive',
+  type: 'scatter'
+};
+
+
+var trace2 = {
+  x: df.data.date,
+  y: percentChangePerDay,
+  name: 'Percent Change in Number of Student Positive',
+  yaxis: 'y2',
+  type: 'scatter'
+};
+
+
+var data = [trace1, trace2];
+
+var layout = {
+  autosize: true,
+  width: graphWidth,
+  height: graphHeight,
+  title: 'ASU Student Covid Change per Day',
+  yaxis: {title: 'Change'},
+  yaxis2: {
+    title: 'Percentage Change',
+    titlefont: {color: 'rgb(148, 103, 189)'},
+    tickfont: {color: 'rgb(148, 103, 189)'},
+    overlaying: 'y',
+    side: 'right'
+  }
+};
+
+Plotly.newPlot(graphStaff, data, layout);
+
+graphStaff
 # %% [markdown]
 ### COVID-19 Download Data 
 
 Click the button to download 
-# %% [javascript]
+# %%--- [javascript]
+# properties:
+#   run_on_load: true
+# ---%%
 function downloadCSV(){
 	var hiddenElement = document.createElement('a');
     hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(df.csv);
