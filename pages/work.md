@@ -9,6 +9,13 @@ eleventyNavigation:
 ---
 ### 👩‍💻 Experience:
 
+#### Galtroincs *Tempe, Arizona*
+
+**Antenna Integration Engineer** *(Jan 2021 - June 2021)*
+
+* Manufactures antennas and preform tests 
+  * Primarily Wifi bands 2.4 GHz , 5 GHz
+
 #### ASU Neuro-Electricity Lab *Tempe, Arizona*
 
 **Undergraduate Researcher** *(2021 - Present)*
@@ -30,7 +37,7 @@ eleventyNavigation:
 
 #### ASU Immersive Creation Studio *Tempe, Arizona*
 
-**Extended Reality (XR) Creative Developer** *(2020 - Present)*
+**Extended Reality (XR) Creative Developer** *(2020 - 2021)*
 
 * Develops alongside *[DreamScape Learn](https://www.dreamscapelearn.com/)* to build full body immersive VR haptic environments and experiences
 * Creates VR and AR applications
@@ -50,6 +57,14 @@ eleventyNavigation:
 **BSE Electrical Engineering** *(2020 - Present)*
 
 * Expected Graduation date Spring 2023 
+
+#### Arizona State University 
+
+**Minor in German**
+
+#### Arizona State University 
+
+**Minor in Mathematics**
 
 #### Arizona State University 
 
