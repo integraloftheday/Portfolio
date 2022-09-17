@@ -9,6 +9,12 @@ eleventyNavigation:
 ---
 ### 👩‍💻 Experience:
 
+#### General Dynamics Mission Systems *Scottsdale, Arizona*
+**Engineering Summer Intern** *(June 2022-August 2022)*
+* Worked within the FPGA Center of Excellence and Trusted Space Solution 
+  * Worked as a digital designer and verification engineer for space applications 
+  * Spearheaded efforts to validate, and fix ASIC designs. 
+
 #### Galtroincs *Tempe, Arizona*
 
 **Antenna Integration Engineer** *(Jan 2021 - June 2021)*
